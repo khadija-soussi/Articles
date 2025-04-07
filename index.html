@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Articles</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .article-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .author-link {
+            text-decoration: none;
+            color: #b30086;
+            font-weight: bold;
+        }
+        
+        .author-link:hover {
+            text-decoration: underline;
+        }
+                
+        body {
+            background-color: #d9a6c9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px; /* Adjusts to larger screens */
+            margin: auto;
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Space between articles */
+        }
+        
+        .article-card {
+            width: calc(28.33% - 20px); /* Three articles per row */
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .article-card {
+                width: calc(50% - 20px); /* Two articles per row on smaller screens */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .article-card {
+                width: 100%; /* One article per row on small screens */
+            }
+        }
+        
+        .article-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .article-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .article-info {
+            background-color: #e6007e;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .actions button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .comment-section {
+            display: none;
+            margin-top: 10px;
+        }
+        .comment-input {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 300px;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="searchAuthor" placeholder="Search by author..." onkeyup="filterArticles()" class="search-box">
+    <h1>Recent articles</h1>
+    <div class="container">
+        
+
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article1.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author1.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">The Future of AI</p>
+                <p>date of writing: 10/03/2025</p>
+                <p>topic: Technology</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author2.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">John Doe</a></p>
+            </div>
+            <div class="article-info">
+                <p class="article-title">Health Benefits of Yoga</p>
+                <p>date of writing: 15/02/2025</p>
+                <p>topic: Wellness</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+        <div class="article-card">
+            <img src="article3.jpg" alt="Article Image" class="article-image">
+            <div class="author-info">
+                <img src="author3.jpg" alt="Author Image" class="author-img">
+                <p><a href="profile.html" class="author-link">David Maro</a></p>
+            </div>
+            
+            <div class="article-info">
+                <p class="article-title">Space Exploration Advances</p>
+                <p>date of writing: 01/01/2025</p>
+                <p>topic: Science</p>
+            </div>
+            <div class="actions">
+                <button onclick="incrementLike(this)">👍 <span class="like-count">0</span></button>
+                <button onclick="toggleCommentInput(this)">💬</button>
+                <button>🔗</button>
+            </div>
+            
+            <div class="comment-section">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleCommentInput(button) {
+            var commentSection = button.closest('.article-card').querySelector('.comment-section');
+            if (commentSection.style.display === 'none' || commentSection.style.display === '') {
+                commentSection.style.display = 'block';
+            } else {
+                commentSection.style.display = 'none';
+            }
+        }
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+        function incrementLike(button) {
+            let likeCount = button.querySelector(".like-count");
+            let count = parseInt(likeCount.textContent);
+            likeCount.textContent = count + 1;
+        }
+        function filterArticles() {
+            let input = document.getElementById("searchAuthor").value.toLowerCase();
+            let articles = document.querySelectorAll(".article-card");
+        
+            articles.forEach(article => {
+                let authorName = article.querySelector(".author-info p").textContent.toLowerCase();
+                if (authorName.includes(input)) {
+                    article.style.display = "block";  // Show article if it matches
+                } else {
+                    article.style.display = "none";  // Hide article if no match
+                }
+            });
+        }
+        
+        
+    </script>
+</body>
+</html>

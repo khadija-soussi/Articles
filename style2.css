@@ -1,0 +1,276 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #a31964;
+    color: white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    height: 100vh;
+}
+
+header {
+    grid-column: span 2;
+    background-color: #999;
+    text-align: center;
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+.logo {
+
+
+
+
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 15%;
+    bottom: -75px;
+
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.username { 
+    bottom: -50%;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+aside {
+    background-color: #a31964;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    margin-top: 50px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+nav ul {
+    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    color: #a31964;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.article {
+    margin-top: 500px;
+    background-color: white;
+    color: black;
+    width: 80%;
+    margin: 40px 0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.article .image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+
+
+}
+
+.article .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 0 0;
+
+}
+
+.article h2 {
+    color: #a31964;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 3;
+}
+
+.article .details {
+    background-color: #a31964;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    width: 80%;
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+
+/* Ajouter ces règles à la fin du fichier existant */
+
+/* Bouton hamburger */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #a31964;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Navigation responsive */
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        transition: 0.3s;
+        z-index: 999;
+        padding-top: 80px;
+    }
+
+    aside.active {
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    main {
+        margin-top: 80px;
+    }
+
+
+/* Grille responsive */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.article {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ajustement header */
+header {
+    margin-bottom: 30px;
+}

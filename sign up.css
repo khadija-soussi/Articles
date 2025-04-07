@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+p {
+    margin-left: 40px;
+}
+
+
+
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    border-top-right-radius: 100px;
+}
+.left-panel h2 {
+    font-size: 35px;
+    margin-bottom: 20px; 
+    margin-left: -100px ;
+}
+.left-panel h6 {
+    font-size: 10px;
+    margin-left: -100px ;
+}
+.right-panel {
+    width: 40%;
+    background-color: #C42D7E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.side-image {
+    width: 200%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.form-container {
+    width: 80%;
+    max-width: 400px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-left: -100px;
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between elements */
+    margin-left: -100px;
+}
+
+.radio-option {
+    display: flex;
+    font-size: 15px;
+    margin-left: -80px;
+    font-family: "Arial";
+    font-weight: normal;
+}
+
+.radio-option input {
+    margin: 10;
+}
+td{
+    padding: 10px;
+    text-align: left;
+    color: black;
+    font-size: 15px;
+    margin-left: -10px;
+    width:5px;
+    
+}
+tr{
+    height: 20px;
+}
+
+
+
+
+label {
+    display: block; 
+    font-weight: bold;
+    margin-bottom: 5px;
+    
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #D17070;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: -40px;
+}
+
+.btn:hover {
+    background-color: #b85a5a;
+}
+
+.dob {
+    display: flex;
+    gap: 10px;
+}
