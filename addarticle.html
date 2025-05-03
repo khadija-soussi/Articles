@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un article</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        header {
+            width: 100%;
+            background-color: #b30086;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea, select, button {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #b30086;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #8e0072;
+        }
+
+        .link {
+            margin-top: 1rem;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ajouter un article</h1>
+    </header>
+
+    <div class="container">
+        <main>
+            <h2>Créer un nouvel article</h2>
+            <form id="article-form" action="add_article.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="title" id="title" placeholder="Titre de l'article" required>
+                <input type="text" name="author" id="author" placeholder="Nom de l'auteur" required>
+                <input type="date" name="date" id="date" required>
+                <input type="text" name="topic" id="topic" placeholder="Thème" required>
+                <textarea name="content" id="content" rows="6" placeholder="Contenu de l'article" required></textarea>
+                <input type="file" name="image" id="image" accept="image/*">
+                <button type="submit">Publier l'article</button>
+            </form>
+            <a href="profile.html" class="link">Retour au profil</a>
+        </main>
+    </div>
+
+    <script>
+        // Form Validation (before submission)
+        const form = document.getElementById('article-form');
+        form.addEventListener('submit', function(event) {
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const date = document.getElementById('date').value;
+            const topic = document.getElementById('topic').value;
+            const content = document.getElementById('content').value;
+
+            if (!title || !author || !date || !topic || !content) {
+                event.preventDefault(); // Prevent form submission
+                alert('Tous les champs doivent être remplis!');
+            }
+        });
+    </script>
+</body>
+</html>
+
