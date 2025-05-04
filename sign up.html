@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="sign up.css">
 </head>
 <body>
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <iframe
+        id="introVideo"
+        src="video.mp4"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
     <div class="container">
         <div class="left-panel">
             <h2>Create account</h2>
@@ -88,5 +99,18 @@
             <img src="signup.png" alt="Decorative emojis" class="side-image">
         </div>
     </div>
+    <script> // Show the modal on page load
+        window.onload = function () {
+          const modal = document.getElementById('videoModal');
+          modal.style.display = 'flex';
+        };
+    
+        function closeModal() {
+          const modal = document.getElementById('videoModal');
+          const iframe = document.getElementById('introVideo');
+          iframe.src = ""; // Stop the video
+          modal.style.display = 'none';
+        }
+      </script></script>
 </body>
 </html>
