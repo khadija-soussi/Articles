@@ -22,35 +22,35 @@
     <div class="container">
         <div class="left-panel">
             <h2>Create account</h2>
-            <form class="form-container">
+            <form class="form-container" action="signup.php" method="POST">
                 <div class="form-group">
                     <label for="profile">Profile name</label>
-                    <input type="text" id="profile" placeholder="Enter your profile name">
+                    <input type="text" id="profile" name="username" placeholder="Enter your profile name">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email address">
+                    <input type="email" id="email" name="mail" placeholder="Enter your email address">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
                 </div>
                 <h6>Use 8 or more characters with a mix of letters, numbers & symbols</h6>
                 <br>
                 <div class="form-group">
                     <label for="password">Confirm password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
+                    <input type="password" id="confirm" name="confirm_password" placeholder="Enter your password">
                 </div>
                 <br>
                 <label class="form-group" for="gender">What's your gender?</label>
                 <table>
                     <tr>
                         <td><label class="radio-option" for="female">Female</label></td>
-                        <td><input type="radio" name="gender" id="female"></td>
+                        <td><input type="radio" name="genre" id="female"></td>
                     </tr>
                     <tr>
                         <td><label class="radio-option" for="male">Male</label></td>
-                        <td><input type="radio" name="gender" id="male"></td>
+                        <td><input type="radio" name="genre" id="male"></td>
                     </tr>
                 </table>
                 
@@ -92,7 +92,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn">Sign up</button>
+                <button class="btn" type="submit" name="submit">Sign up</button>
                 <p>Already have an account? <a href="sign in.html">Log in</a></p>
             </form>
         </div>
