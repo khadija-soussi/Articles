@@ -10,7 +10,7 @@
     <div class="container">
         <div class="left-panel">
             <h2>Create account</h2>
-            <form class="form-container" action="signup.php" method="POST">
+            <form class="form-container" action="http:\\localhost:81\Articles\signup.php" method="POST">
                 <div class="form-group">
                     <label for="profile">Profile name</label>
                     <input type="text" id="profile" name="username" placeholder="Enter your profile name">
@@ -34,11 +34,11 @@
                 <table>
                     <tr>
                         <td><label class="radio-option" for="female">Female</label></td>
-                        <td><input type="radio" name="genre" id="female"></td>
+                        <td><input type="radio" name="genre" id="female" value="Female" required></td>
                     </tr>
                     <tr>
                         <td><label class="radio-option" for="male">Male</label></td>
-                        <td><input type="radio" name="genre" id="male"></td>
+                        <td><input type="radio" name="genre" id="male" value="Male"></td>
                     </tr>
                 </table>
                 
