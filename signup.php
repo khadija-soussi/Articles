@@ -61,7 +61,7 @@ try {
             ':genre' => $gender
         ]);
 
-        echo "✅ Account successfully created!";
+        header("Location: index.html");
         exit();
     }
 
