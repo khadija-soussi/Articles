@@ -6,13 +6,13 @@ error_reporting(E_ALL);
 // DB config
 $db_host = 'localhost';
 $db_name = 'projet_web';
-$db_port = '3312'; 
+
 $db_user = 'root';
 $db_pass = '';
 
 try {
     // Connect to database with port specification
-    $db = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_name;charset=utf8", 
+    $db = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", 
                  $db_user, $db_pass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

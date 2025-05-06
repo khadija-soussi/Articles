@@ -30,9 +30,11 @@
                 <span></span>
                 <span></span>
             </button>
-            <div class="profile-pic"><img src="bg.jpg" alt="hold"></div>
-            <div class="logo"><img src="author1.jpg" alt="hold"></div>
-            <h1 class="username">User name</h1>
+            <div class="profile-pic"><img id="bg-pic" src="bg.jpg" alt="hold"></div>
+            <div class="logo"><img id="pf-pic" src="author1.jpg" alt="hold"></div>
+            <h1 class="username" id="username">Loading</h1>
+            <div class="edit-form" id="edit-form-container"></div>
+
         </header>
 
         <aside>
@@ -40,7 +42,7 @@
                 <ul>
                     <li><a href="index.html">Browse articles</a></li>
                     <li><a href="addarticle.html">Add article</a></li>
-                    <li><a href="sign in.html">Log out</a></li>
+                    <li><a href="sign%20in.html">Log out</a></li>
                 </ul>
             </nav>
         </aside>
@@ -103,5 +105,39 @@
         </main>
     </div>
     <script src="sript.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("profile.php")
+                .then(response => {
+                    if (!response.ok) {
+                        alert("mochkel fil fetch!")
+                        window.location.href = "sign%20in.html";
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById("username").textContent = data.username;
+                    document.getElementById("pf-pic").src = data.profile_picture;
+                    document.getElementById("bg-pic").src = data.background_picture;
+        
+                    document.getElementById("edit-form-container").innerHTML = `
+                        <form action="update_profile_pics.php" method="post">
+                            <label>Profile Picture URL:</label>
+                            <input type="text" name="profile_picture" value="${data.profile_picture}" required>
+        
+                            <label>Background Picture URL:</label>
+                            <input type="text" name="background_picture" value="${data.background_picture}" required>
+        
+                            <button type="submit">Update</button>
+                        </form>
+                    `;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    window.location.href = "sign%20in.html";
+                });
+        });
+        </script>
+        
 </body>
 </html>

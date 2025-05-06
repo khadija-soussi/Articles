@@ -1,0 +1,7 @@
+Array
+(
+    [user_id] => 
+    [last_activity] => 1746539774
+    [user_username] => zeazez
+    [username] => zeazez
+)
