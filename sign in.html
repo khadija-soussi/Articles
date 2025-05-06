@@ -29,6 +29,20 @@
                 </form>
             </div>
         </div>
+        <audio id="myAudio" >
+            <source src="wlecoming-_music.wav" type="audio/ogg">
+          
+          Your browser does not support the audio element.
+          </audio>
+          <script>
+            // Wait for a user interaction
+            document.addEventListener('click', function () {
+              const audio = document.getElementById('myAudio');
+              audio.play().catch(error => {
+                console.error("Autoplay failed:", error);
+              });
+            }, { once: true }); // Only triggers once
+          </script>
           
     </div>
     <script>
