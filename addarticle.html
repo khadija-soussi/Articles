@@ -208,9 +208,16 @@
                     <?php unset($_SESSION['success']); ?>
                 </div>
             <?php endif; ?>
-
+            <h3>5 Tips to Write a Great Article:</h3>
+            <ol >
+              <li>Choose a clear and catchy title</li>
+              <li>Start with a strong introduction</li>
+              <li>Use short, clear paragraphs</li>
+              <li>Add images or examples</li>
+              <li>End with a strong conclusion</li>
+            </ol>
             <h2>Créer un nouvel article</h2>
-            <form id="article-form" action="add_article.php" method="post" enctype="multipart/form-data">
+            <form id="article-form" action="http:\\localhost:81\Articles\add_article.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Titre de l'article</label>
                     <input type="text" name="title" id="title" placeholder="Entrez le titre" required>
