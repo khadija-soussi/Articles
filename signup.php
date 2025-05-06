@@ -1,4 +1,8 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -52,6 +56,7 @@ try {
             INSERT INTO user (username, password, mail, date_de_naissance, genre)
             VALUES (:username, :password, :mail, :dob, :genre)
         ");
+        
 
         $stmt->execute([
             ':username' => $username,
@@ -60,6 +65,34 @@ try {
             ':dob' => $dob,
             ':genre' => $gender
         ]);
+        // Send confirmation email using PHPMailer
+$mail = new PHPMailer(true);
+
+try {
+    // Server settings
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'projetwebensi2025@gmail.com';         // ⚠️ Remplace par ton adresse Gmail
+    $mail->Password = 'cbismckaawhmoega';             // ⚠️ App Password si tu utilises Gmail
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+
+    // Recipients
+    $mail->setFrom('projetwebensi2025@gmail.com', 'Articles Website');
+    $mail->addAddress($email, $username);
+
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Bienvenue sur notre site';
+    $mail->Body = "<h1>Bonjour $username !</h1><p>Votre compte a été créé avec succès.</p>";
+
+    $mail->send();
+    // Optionnel : echo "📩 Email envoyé avec succès";
+} catch (Exception $e) {
+    echo "Erreur lors de l'envoi de l'email : {$mail->ErrorInfo}";
+}
+
 
         header("Location: index.html");
         exit();
