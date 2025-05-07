@@ -131,6 +131,22 @@
         
     </style>
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('get_username.php')
+            .then(response => response.json())
+            .then(data => {
+                const usernameElement = document.querySelector('.username');
+                if (usernameElement && data.username) {
+                    usernameElement.textContent = data.username;
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors du chargement du nom d'utilisateur :", error);
+            });
+    });
+    </script>
+    
 <body>
     <input type="text" id="searchAuthor" placeholder="Search by author..." onkeyup="filterArticles()" class="search-box">
     <h1>Recent articles</h1>

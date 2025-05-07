@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,7 @@
     </style>
 </head>
 <body>
+    
     <div class="container">
         <header>
             <button class="menu-toggle" id="menu-toggle">
@@ -32,7 +34,18 @@
             </button>
             <div class="profile-pic"><img src="bg.jpg" alt="hold"></div>
             <div class="logo"><img src="author1.jpg" alt="hold"></div>
-            <h1 class="username">User name</h1>
+            <h1 class="username"><span id="username">Loading...</span></h1>
+            <script>
+            fetch('get_username.php')
+            .then(response => response.text())
+            .then(data => {
+            document.getElementById('username').textContent = data || 'Guest';
+            })
+            .catch(() => {
+            document.getElementById('username').textContent = 'Guest';
+            });
+</script>
+
         </header>
 
         <aside>

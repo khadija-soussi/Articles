@@ -31,7 +31,7 @@ try {
         $date = $_POST['date'] ?? '';
         $topic = $_POST['topic'] ?? '';
         $content = $_POST['content'] ?? '';
-        $username = "anonymous";
+        $username = $_SESSION['username'] ?? 'anonymous';
 
         // Vérification champs obligatoires
         if (empty($title) || empty($author) || empty($date) || empty($topic) || empty($content)) {

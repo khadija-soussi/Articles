@@ -42,7 +42,7 @@ try {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['username'] = $user['username'];
-            header("Location: index.html"); // redirect to homepage after login
+            header("Location: profile.html"); // redirect to homepage after login
             exit();
         } else {
             header("Location: sign in.html?error=" . urlencode("❌ Invalid username/email or password."));
