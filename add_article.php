@@ -4,14 +4,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Configuration base de données
 $db_host = 'localhost';
 $db_name = 'projet_web';
 $db_port = '3312';
 $db_user = 'root';
 $db_pass = '';
 
-// Taille maximale fichier image (2 Mo)
 $maxFileSize = 2 * 1024 * 1024;
 $allowedTypes = [
     'image/jpeg' => 'jpg',
