@@ -25,7 +25,6 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Récupération simple des champs
         $title = $_POST['title'] ?? '';
         $author = $_POST['author'] ?? '';
         $date = $_POST['date'] ?? '';
@@ -33,19 +32,17 @@ try {
         $content = $_POST['content'] ?? '';
         $username = $_SESSION['username'] ?? 'anonymous';
 
-        // Vérification champs obligatoires
         if (empty($title) || empty($author) || empty($date) || empty($topic) || empty($content)) {
             header("Location: add_article.php?error=" . urlencode("Tous les champs sont obligatoires."));
             exit();
         }
 
-        // Vérification de la date
         if (!DateTime::createFromFormat('Y-m-d', $date)) {
             header("Location: add_article.php?error=" . urlencode("Date invalide."));
             exit();
         }
 
-        // Gestion image
+       
         $imagePath = null;
         if (!empty($_FILES['image']['tmp_name']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['image'];
@@ -70,7 +67,7 @@ try {
             move_uploaded_file($file['tmp_name'], $imagePath);
         }
 
-        // Insertion dans la BDD
+        
         $stmt = $db->prepare("
             INSERT INTO articles (title, author, date, topic, content, image_path, username)
             VALUES (:title, :author, :date, :topic, :content, :image_path, :username)

@@ -264,7 +264,7 @@
     </div>
 
     <script>
-        // Enhanced form validation
+        
         const form = document.getElementById('article-form');
         form.addEventListener('submit', function(event) {
             const title = document.getElementById('title').value.trim();
@@ -274,14 +274,14 @@
             const content = document.getElementById('content').value.trim();
             const image = document.getElementById('image').files[0];
 
-            // Check required fields
+            
             if (!title || !author || !date || !topic || !content) {
                 event.preventDefault();
                 alert('Veuillez remplir tous les champs obligatoires.');
                 return;
             }
 
-            // Check image size if uploaded
+            
             if (image && image.size > 2097152) {
                 event.preventDefault();
                 alert('La taille de l\'image ne doit pas dépasser 2MB.');
@@ -289,7 +289,7 @@
             }
         });
 
-        // Show selected file name
+        
         document.getElementById('image').addEventListener('change', function(e) {
             const fileName = e.target.files[0]?.name || 'Aucun fichier sélectionné';
             const fileUploadSpan = document.querySelector('.file-upload span');

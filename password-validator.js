@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         passwordMessage.innerHTML = message;
         passwordMessage.className = isValid ? "message valid" : "message error";
         
-        // Visual feedback on the input field
+        
         passwordInput.style.borderColor = isValid ? "#28a745" : "#dc3545";
     });
 });

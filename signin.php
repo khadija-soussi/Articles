@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 session_start();
 
-// Database configuration
+
 $db_host = 'localhost';
 $db_name = 'projet_web';
 $db_port = '3312'; 
@@ -30,7 +30,7 @@ try {
 
         }
 
-        // Determine if it's an email or username
+        
         if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
             $stmt = $db->prepare("SELECT * FROM user WHERE mail = :identifier");
         } else {
@@ -42,7 +42,7 @@ try {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['username'] = $user['username'];
-            header("Location: profile.html"); // redirect to homepage after login
+            header("Location: profile.html"); 
             exit();
         } else {
             header("Location: sign in.html?error=" . urlencode("❌ Invalid username/email or password."));

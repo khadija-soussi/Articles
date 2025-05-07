@@ -189,9 +189,7 @@ main {
 
 
 
-/* Ajouter ces règles à la fin du fichier existant */
 
-/* Bouton hamburger */
 .menu-toggle {
     display: none;
     position: fixed;
@@ -214,7 +212,7 @@ main {
     transition: 0.3s;
 }
 
-/* Navigation responsive */
+
     .container {
         grid-template-columns: 1fr;
     }
@@ -255,7 +253,7 @@ main {
     }
 
 
-/* Grille responsive */
+
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -270,7 +268,7 @@ main {
     box-sizing: border-box;
 }
 
-/* Ajustement header */
+
 header {
     margin-bottom: 30px;
 }

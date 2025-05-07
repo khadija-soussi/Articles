@@ -28,17 +28,17 @@
         }
         .container {
             width: 90%;
-            max-width: 1200px; /* Adjusts to larger screens */
+            max-width: 1200px;
             margin: auto;
             padding-top: 20px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px; /* Space between articles */
+            gap: 20px; 
         }
         
         .article-card {
-            width: calc(28.33% - 20px); /* Three articles per row */
+            width: calc(28.33% - 20px); 
             background-color: white;
             border-radius: 10px;
             padding: 15px;
@@ -51,16 +51,16 @@
             transform: scale(1.02);
         }
         
-        /* Responsive Design */
+        
         @media (max-width: 900px) {
             .article-card {
-                width: calc(50% - 20px); /* Two articles per row on smaller screens */
+                width: calc(50% - 20px); 
             }
         }
         
         @media (max-width: 600px) {
             .article-card {
-                width: 100%; /* One article per row on small screens */
+                width: 100%; 
             }
         }
         
@@ -505,9 +505,9 @@
             articles.forEach(article => {
                 let authorName = article.querySelector(".author-info p").textContent.toLowerCase();
                 if (authorName.includes(input)) {
-                    article.style.display = "block";  // Show article if it matches
+                    article.style.display = "block";  
                 } else {
-                    article.style.display = "none";  // Hide article if no match
+                    article.style.display = "none";  
                 }
             });
         }
